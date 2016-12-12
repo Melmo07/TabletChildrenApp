@@ -15,7 +15,8 @@ function setup() {
   for(var i=0; i<5; i++)
   {
   var HerissonBumping = createSprite(150,150);
-  HerissonBumping.addAnimation("normal", "assets/HerissonBumping_00.png","assets/HerissonBumping_00.png");
+  HerissonBumping.addAnimation("normal", "assets/HerissonBumping_00.png", "assets/HerissonBumping_03.png");
+  HerissonBumping.addAnimation("Hello", "assets/HerissonBumping_58.png", "assets/HerissonBumping_74.png");
   HerissonBumping.setCollider("HerissonBumping", -2,2,55);
   //Herisson_Bumping.addAnimation("Bumping", "assets/Herisson_Bumping_01", "assets/Herisson_Bumping_74");
   HerissonBumping.setSpeed(random(3,7), random(0, 360));
@@ -50,6 +51,20 @@ function setup() {
   Buissons.add(Buisson);
   }
 
+  //function mouseDragged() {
+    //HerissonBumping.changeAnimation("Hello");
+    //}
+
+  HerissonBumping.onMousePressed = function (){
+      HerissonBumping.changeAnimation("Hello");
+      velocity = 0
+      HerissonBumping.immovable = true;
+  }
+
+  HerissonBumping.onMouseReleased = function (){
+      HerissonBumping.changeAnimation("normal");
+  }
+
 //HERE trying to change the animation when colliding with smth
     //if("Herisson_Bumping") {
       //changeAnimation("Bumping");
@@ -60,9 +75,6 @@ function setup() {
 
 function draw() {
   background(255,255,255);
-
-
-
   //circles bounce against each others and against boxes
   Herissons.bounce(Herissons);
   //boxes are "immovable"
