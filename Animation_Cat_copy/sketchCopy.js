@@ -8,12 +8,12 @@ var face;
 function setup() {
   createCanvas(800,400);
 
-  face = loadImage("assets/CatWalk.jpg");
+  face = loadImage("assets/CatWalk_00");
 
   //Sometimes image sequences are not enough and you may want to
   //use p5's drawing function while retaining the built-in features of the
   //sprite class
-  stretchy = createSprite(300, 300, 10, 10);
+  stretchy = createSprite(400, 200, 10, 10);
 
   //To do so you can override (overwrite) the draw() function of the sprite
   //and make it display anything you want in its current position.
@@ -23,13 +23,13 @@ function setup() {
 
     //the center of the sprite will be point 0,0
     //"this" in this function will reference the sprite itself
-    fill(237,50,50);
+    fill(237,205,0);
 
     //make the ellipse stretch in the sprite direction
     //proportionally to its speed
     push();
     rotate(radians(this.getDirection()));
-    rect(0,0, 100+this.getSpeed(), 100-this.getSpeed());
+    ellipse(0,0, 100+this.getSpeed(), 100-this.getSpeed());
     pop();
 
     //this.deltaX and this.deltaY are the position increment

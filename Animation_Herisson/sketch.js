@@ -16,7 +16,8 @@ function setup() {
   {
   var HerissonBumping = createSprite(150,150);
   HerissonBumping.addAnimation("normal", "assets/HerissonBumping_00.png", "assets/HerissonBumping_03.png");
-  HerissonBumping.addAnimation("Hello", "assets/HerissonBumping_58.png", "assets/HerissonBumping_74.png");
+  HerissonBumping.addAnimation("Hello", "assets/HerissonBumping_58.png", "assets/HerissonBumping_70.png");
+  HerissonBumping.addAnimation("Hi", "assets/HerissonBumping_71.png", "assets/HerissonBumping_74.png");
   HerissonBumping.setCollider("HerissonBumping", -2,2,55);
   //Herisson_Bumping.addAnimation("Bumping", "assets/Herisson_Bumping_01", "assets/Herisson_Bumping_74");
   HerissonBumping.setSpeed(random(3,7), random(0, 360));
@@ -50,6 +51,21 @@ function setup() {
 
   Buissons.add(Buisson);
   }
+
+  for (var i = 0; i < Herissons.length; i++) {
+    //console.log(Herissons[i]);
+    Herissons[i].onMousePressed = function () {
+      this.changeAnimation("Hello");
+      console.log("pressed");
+      velocity = 0
+      this.immovable = true;
+    }
+    Herissons[i].onMouseReleased = function () {
+      this.changeAnimation("normal");
+    }
+  }
+
+
 
   //function mouseDragged() {
     //HerissonBumping.changeAnimation("Hello");
